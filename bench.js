@@ -1,6 +1,3 @@
-/**
- * Created by AdiReka on 2015.04.17..
- */
 var Promise = require('bluebird');
 var MyEmitter = require('./emitter');
 var NodeEmitter = require('events').EventEmitter;

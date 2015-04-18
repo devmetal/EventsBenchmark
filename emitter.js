@@ -1,6 +1,3 @@
-/**
- * Created by AdiReka on 2015.04.17..
- */
 var assign = require('object-assign');
 
 function EventEmitter(){}
