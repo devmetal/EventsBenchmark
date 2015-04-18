@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Event benchmarks</title>
+    <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+</head>
+<body>
+<h1>Event benchmarks</h1>
+<div id="log"></div>
+<script>
+    var _log = document.getElementById('log');
+    var log = function(msg) {
+        var p = document.createElement('p');
+        p.innerHTML = msg;
+        _log.appendChild(p);
+    };
+
+    var socket = io('http://127.0.0.1:5051',{transports: ['websocket']});
+    socket.on('ready',function(){
+        log('Server is ready!');
+        socket.emit('run');
+    });
+
+    socket.on('started',function(){
+        log('Process started!');
+    });
+
+    socket.on('cycle',function(data){
+        log(data.msg);
+    });
+
+    socket.on('complete',function(data){
+        log(data.msg);
+        socket.disconnect();
+    });
+
+    socket.on('error',function(data){
+        log(data.msg);
+    });
+</script>
+</body>
+</html>
