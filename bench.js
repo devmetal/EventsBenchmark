@@ -23,7 +23,7 @@ function initSuite($test) {
     };
     var NOTDUM = 'NOT_SO_DUMMY_EVENT';
     var notSoDummyHandler = function () {
-      for (let i=0; i < 10000; i++) {
+      for (var i=0; i < 10000; i++) {
         i % 2;
       }
     }
@@ -43,40 +43,40 @@ function initSuite($test) {
         var suite = new Benchmark.Suite('events');
         suite
             .add('MyEmitter#Dummmy', function () {
-                myEmitter.emit(EVT);
+                myEmitter.emit(DUM);
             })
             .add('MyEmitter#Complex', function () {
-                myEmitter.emit(EVT);
+                myEmitter.emit(NOTDUM);
             })
             .add('NodeEmitter#Dummy', function () {
-                nodeEmitter.emit(EVT);
+                nodeEmitter.emit(DUM);
             })
             .add('NodeEmitter#Complex', function () {
-                nodeEmitter.emit(EVT);
+                nodeEmitter.emit(NOTDUM);
             })
             .add('ComponentEmitter#Dummy', function () {
-                componentEmitter.emit(EVT);
+                componentEmitter.emit(DUM);
             })
             .add('ComponentEmitter#Complex', function () {
-                componentEmitter.emit(EVT);
+                componentEmitter.emit(NOTDUM);
             })
             .add('EventEmitter2#Dummy', function () {
-                emitter2.emit(EVT);
+                emitter2.emit(DUM);
             })
             .add('EventEmitter2#Complex', function () {
-                emitter2.emit(EVT);
+                emitter2.emit(NOTDUM);
             })
             .add('jQuery#Dummy', function () {
-                $test.trigger(EVT);
+                $test.trigger(DUM);
             })
             .add('jQuery#Complex', function () {
-                $test.trigger(EVT);
+                $test.trigger(NOTDUM);
             })
             .add('Struts 2 jQuery subscribe#Dummy', function () {
-                $test.publish(EVT);
+                $test.publish(DUM);
             })
             .add('Struts 2 jQuery subscribe#Complex', function () {
-                $test.publish(EVT);
+                $test.publish(NOTDUM);
             });
 
         resolve(suite);
