@@ -16,7 +16,7 @@
         _log.appendChild(p);
     };
 
-    var socket = io('http://127.0.0.1:5051',{transports: ['websocket']});
+    var socket = io('http://127.0.0.1:5051');
     socket.on('ready',function(){
         log('Server is ready!');
         socket.emit('run');
